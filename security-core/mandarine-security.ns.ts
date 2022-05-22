@@ -226,7 +226,7 @@ export namespace MandarineSecurity {
              * 
              * @throws MandarineSecurityException if no user was found.
              */
-            loadUserByUsername: (username: string) => UserDetails | undefined;
+            loadUserByUsername: (username: string) => Promise<UserDetails | undefined>;
         }
 
         /**
@@ -277,8 +277,8 @@ export namespace MandarineSecurity {
          */
         export interface Authenticator {
             getAuthenticationId: (requestContext: Mandarine.Types.RequestContext) => string | undefined;
-            performAuthentication: (data: PerformAuthenticationOptions) => [AuthenticationResult, UserDetails | undefined];
-            performHTTPAuthentication: (data: PerformHTTPAuthenticationOptions) => [AuthenticationResult, UserDetails | undefined];
+            performAuthentication: (data: PerformAuthenticationOptions) => Promise<[AuthenticationResult, UserDetails | undefined]>;
+            performHTTPAuthentication: (data: PerformHTTPAuthenticationOptions) => Promise<[AuthenticationResult, UserDetails | undefined]>;
             stopHTTPAuthentication: (requestContext: Mandarine.Types.RequestContext) => void;
         }
 

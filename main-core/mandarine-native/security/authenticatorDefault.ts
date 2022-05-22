@@ -44,7 +44,7 @@ export class Authenticator implements Mandarine.Security.Auth.Authenticator {
      * 
      * @param data Contains the information to execute the authentication such as user & password. It takes an optional value for `executer` which is a function to be executed when authentication is done (if successful)
      */
-    public performAuthentication(data: Mandarine.Security.Auth.PerformAuthenticationOptions): [Mandarine.Security.Auth.AuthenticationResult, Mandarine.Security.Auth.UserDetails | undefined] {
+    public async performAuthentication(data: Mandarine.Security.Auth.PerformAuthenticationOptions): Promise<[Mandarine.Security.Auth.AuthenticationResult, Mandarine.Security.Auth.UserDetails | undefined]> {
         const { username, password, executer } = data;
         const throwUserError = () => new MandarineAuthenticationException("User does not exist", Mandarine.Security.Auth.AuthExceptions.INVALID_USER);
         const throwPasswordError = () => new MandarineAuthenticationException("Password is invalid", Mandarine.Security.Auth.AuthExceptions.INVALID_PASSWORD);
@@ -59,7 +59,7 @@ export class Authenticator implements Mandarine.Security.Auth.Authenticator {
             if(!this.verifyAuthenticationSatisfaction(false)) throw new MandarineSecurityException(MandarineSecurityException.UNSATISFIED_AUTHENTICATOR);
 
             const getAuthManagerBuilder = Mandarine.Security.getAuthManagerBuilder();
-            const userDetailsLookUpOriginal = getAuthManagerBuilder.getUserDetailsService().loadUserByUsername(username);
+            const userDetailsLookUpOriginal = await getAuthManagerBuilder.getUserDetailsService().loadUserByUsername(username);
 
             if(!userDetailsLookUpOriginal) {
                 throw throwUserError();
@@ -114,7 +114,7 @@ export class Authenticator implements Mandarine.Security.Auth.Authenticator {
      * @param data Contains the information to execute the authentication such as user & password. 
      * Optionally, you can pass executers to the executer object. Where `authExecuter` is a function to be called at the end of the authentication if successful & `httpExecuter` a function to be called at the end of the HTTP authentication process.
      */
-    public performHTTPAuthentication(data: Mandarine.Security.Auth.PerformHTTPAuthenticationOptions): [Mandarine.Security.Auth.AuthenticationResult, Mandarine.Security.Auth.UserDetails | undefined] {
+    public async performHTTPAuthentication(data: Mandarine.Security.Auth.PerformHTTPAuthenticationOptions): Promise<[Mandarine.Security.Auth.AuthenticationResult, Mandarine.Security.Auth.UserDetails | undefined]> {
         const { requestContext, username, password } = data;
 
         const authenticationData = {
@@ -123,7 +123,7 @@ export class Authenticator implements Mandarine.Security.Auth.Authenticator {
             executer: data.executers?.authExecuter
         };
 
-        const [authenticate, userDetails] = this.performAuthentication(authenticationData);
+        const [authenticate, userDetails] = await this.performAuthentication(authenticationData);
 
         const authenticationObject = Object.assign({}, authenticate);
 
