@@ -6,7 +6,7 @@ import type { MandarineSessionContainer } from "../main-core/mandarine-native/se
 import type { Mandarine } from "../mod.ts";
 import type { Cookie as MandarineCookie } from "./core/interfaces/http/cookie.ts";
 import { MandarineMVCContext } from "./core/mandarineMvcContext.ts";
-import { RenderEngineClass } from "./core/modules/view-engine/renderEngine.ts";
+//import { RenderEngineClass } from "./core/modules/view-engine/renderEngine.ts";
 import type { NonComponentMiddlewareTarget } from "../main-core/internals/interfaces/middlewareTarget.ts";
 import type { GuardTarget } from "../main-core/internals/interfaces/guardTarget.ts";
 
@@ -711,7 +711,7 @@ export namespace MandarineMvc {
             manual: boolean;
         }
 
-        export class RenderEngine extends RenderEngineClass {}
+        //export class RenderEngine extends RenderEngineClass {}
     }
 
     export namespace Configurers {

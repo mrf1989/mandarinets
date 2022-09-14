@@ -1,7 +1,7 @@
 // Copyright 2020-2020 The Mandarine.TS Framework authors. All rights reserved. MIT license.
 
 import { Cookies } from "../../deps.ts";
-import { ComponentsRegistry, Mandarine, ViewModel } from "../../mod.ts";
+import { ComponentsRegistry, Mandarine } from "../../mod.ts";
 import { RoutingUtils } from "../../mvc-framework/core/utils/mandarine/routingUtils.ts";
 import { ApplicationContext } from "../application-context/mandarineApplicationContext.ts";
 import { MandarineConstants } from "../mandarineConstants.ts";
@@ -160,7 +160,7 @@ export class DependencyInjectionFactory {
                         
                         break;
                     case DI.InjectionTypes.TEMPLATE_MODEL_PARAM:
-                        valueToInject = new ViewModel();
+                        //valueToInject = new ViewModel();
                         break;
                     case DI.InjectionTypes.PARAMETERS_PARAM:
                         const allParameters: Mandarine.MandarineMVC.AllParameters = { 

@@ -1,8 +1,8 @@
 // Copyright 2020-2020 The Mandarine.TS Framework authors. All rights reserved. MIT license.
 
-import { renderEjs } from "https://raw.githubusercontent.com/mandarineorg/mandarinets-modules/master/view-engine/1.1.1/lib/engines/ejs.ts";
+//import { renderEjs } from "https://raw.githubusercontent.com/mandarineorg/mandarinets-modules/master/view-engine/1.1.1/lib/engines/ejs.ts";
 // @ts-nocheck
-import { renderHandlebars } from "https://raw.githubusercontent.com/mandarineorg/mandarinets-modules/master/view-engine/1.1.1/lib/engines/handlebars.ts";
+//import { renderHandlebars } from "https://raw.githubusercontent.com/mandarineorg/mandarinets-modules/master/view-engine/1.1.1/lib/engines/handlebars.ts";
 import { Log } from "../../../../logger/log.ts";
 import { ApplicationContext } from "../../../../main-core/application-context/mandarineApplicationContext.ts";
 import { TemplateEngineException } from "../../../../main-core/exceptions/templateEngineException.ts";

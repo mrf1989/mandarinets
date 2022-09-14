@@ -49,7 +49,7 @@ export const requestResolver = async (routingAction: Mandarine.MandarineMVC.Rout
     let renderInformation: Mandarine.MandarineMVC.TemplateEngine.Decorators.RenderData = Reflect.getMetadata(`${MandarineConstants.REFLECTION_MANDARINE_METHOD_ROUTE_RENDER}:${routingAction.actionMethodName}`, handler, routingAction.actionMethodName);
     isRenderable = renderInformation != undefined;
     if(isRenderable) {
-        context.response.body = Mandarine.MandarineMVC.TemplateEngine.RenderEngine.render(renderInformation, renderInformation.engine, (methodValue == (null || undefined)) ? {} : methodValue);
+        //context.response.body = Mandarine.MandarineMVC.TemplateEngine.RenderEngine.render(renderInformation, renderInformation.engine, (methodValue == (null || undefined)) ? {} : methodValue);
     } else {
         context.response.body = Optional.ofNullable(methodValue).orElseGet(undefined);
     }
